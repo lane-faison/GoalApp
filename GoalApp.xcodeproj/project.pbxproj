@@ -16,6 +16,7 @@
 		F64E1C31210443070031D7CB /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E1C30210443070031D7CB /* UIColor+Extensions.swift */; };
 		F64E1C332104453A0031D7CB /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E1C322104453A0031D7CB /* Goal.swift */; };
 		F64E1C35210446EE0031D7CB /* GoalsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E1C34210446EE0031D7CB /* GoalsHelper.swift */; };
+		F64E1C38210457210031D7CB /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E1C37210457210031D7CB /* CreateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F64E1C30210443070031D7CB /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		F64E1C322104453A0031D7CB /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		F64E1C34210446EE0031D7CB /* GoalsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsHelper.swift; sourceTree = "<group>"; };
+		F64E1C37210457210031D7CB /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		F64E1C2621043F980031D7CB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F64E1C362104570C0031D7CB /* Create */,
 				F64E1C2B210440020031D7CB /* Home */,
 			);
 			path = "View Controllers";
@@ -138,6 +141,14 @@
 				F64E1C2921043FFB0031D7CB /* HomeViewController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		F64E1C362104570C0031D7CB /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				F64E1C37210457210031D7CB /* CreateViewController.swift */,
+			);
+			path = Create;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F64E1C38210457210031D7CB /* CreateViewController.swift in Sources */,
 				F64E1C2D2104425C0031D7CB /* UIView+Extensions.swift in Sources */,
 				F64E1C332104453A0031D7CB /* Goal.swift in Sources */,
 				F64E1C35210446EE0031D7CB /* GoalsHelper.swift in Sources */,

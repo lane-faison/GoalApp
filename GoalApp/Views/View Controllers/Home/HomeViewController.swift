@@ -57,7 +57,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController {
     @objc private func goToCreateGoal() {
-        print("Go to create a goal")
+        let createViewController = CreateViewController()
+        navigationController?.pushViewController(createViewController, animated: true)
     }
 }
 
