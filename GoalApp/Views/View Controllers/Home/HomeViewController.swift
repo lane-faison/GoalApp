@@ -54,6 +54,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         guard let goal = goals?[indexPath.row] else { return UITableViewCell() }
         
         cell.nameLabel.text = goal.name
+        cell.iconImageView.image = GoalsHelper().getIcon(for: goal.status)
+        cell.iconImageView.tintColor = GoalsHelper().getIconTintColor(for: goal.status)
         
         return cell
     }
