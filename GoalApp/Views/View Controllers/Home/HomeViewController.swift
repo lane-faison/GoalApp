@@ -16,12 +16,12 @@ class HomeViewController: UIViewController {
         return tableView
     }()
     
-    var goals: [Goal] = []
+    var sortedGoals: [Goal] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        goals = GoalsHelper().getGoals()
+        sortedGoals = GoalsHelper().getGoals()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -32,19 +32,19 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return goals.count
+        return sortedGoals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? UITableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else { return UITableViewCell() }
         
-        let goal = goals[indexPath.row]
+        let goal = sortedGoals[indexPath.row]
         cell.textLabel?.text = goal.name
         
         return cell
@@ -64,6 +64,8 @@ extension HomeViewController {
 extension HomeViewController {
     
     private func setupNavBar() {
+        title = "Goals"
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToCreateGoal))
     }
     
