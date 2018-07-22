@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CreateViewController: UIViewController {
+    
+    var goal = Goal()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +28,17 @@ extension CreateViewController {
     }
     
     @objc func saveTapped() {
-        print("user did save")
+        if let realm = try? Realm() {
+            goal.name = "Test name"
+            goal.monthsToComplete = 2
+            goal.status = .notStarted
+            
+            try? realm.write {
+                realm.add(goal)
+            }
+            
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
 

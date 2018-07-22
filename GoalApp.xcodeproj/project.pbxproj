@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4EA64410104332E5B755A123 /* Pods_GoalApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0C4D23B797326D56742A27 /* Pods_GoalApp.framework */; };
 		F64E1C1121043EA90031D7CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E1C1021043EA90031D7CB /* AppDelegate.swift */; };
 		F64E1C1821043EAB0031D7CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F64E1C1721043EAB0031D7CB /* Assets.xcassets */; };
 		F64E1C1B21043EAB0031D7CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64E1C1921043EAB0031D7CB /* LaunchScreen.storyboard */; };
@@ -17,9 +18,14 @@
 		F64E1C332104453A0031D7CB /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E1C322104453A0031D7CB /* Goal.swift */; };
 		F64E1C35210446EE0031D7CB /* GoalsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E1C34210446EE0031D7CB /* GoalsHelper.swift */; };
 		F64E1C38210457210031D7CB /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E1C37210457210031D7CB /* CreateViewController.swift */; };
+		F6B3137B2104D86F00181596 /* HomeGoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B313792104D86F00181596 /* HomeGoalTableViewCell.swift */; };
+		F6B3137C2104D86F00181596 /* HomeGoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6B3137A2104D86F00181596 /* HomeGoalTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44F24455D5A6316F2AE50F2F /* Pods-GoalApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoalApp/Pods-GoalApp.debug.xcconfig"; sourceTree = "<group>"; };
+		9E0C4D23B797326D56742A27 /* Pods_GoalApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoalApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D65172195380AA1CC08439C4 /* Pods-GoalApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoalApp/Pods-GoalApp.release.xcconfig"; sourceTree = "<group>"; };
 		F64E1C0D21043EA90031D7CB /* GoalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F64E1C1021043EA90031D7CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F64E1C1721043EAB0031D7CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -32,6 +38,8 @@
 		F64E1C322104453A0031D7CB /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		F64E1C34210446EE0031D7CB /* GoalsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsHelper.swift; sourceTree = "<group>"; };
 		F64E1C37210457210031D7CB /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		F6B313792104D86F00181596 /* HomeGoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGoalTableViewCell.swift; sourceTree = "<group>"; };
+		F6B3137A2104D86F00181596 /* HomeGoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeGoalTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +47,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EA64410104332E5B755A123 /* Pods_GoalApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6DA012F82F945791B418F818 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E0C4D23B797326D56742A27 /* Pods_GoalApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		76C0AFCA841F1C4F4F1ED7D2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				44F24455D5A6316F2AE50F2F /* Pods-GoalApp.debug.xcconfig */,
+				D65172195380AA1CC08439C4 /* Pods-GoalApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F64E1C0421043EA90031D7CB = {
 			isa = PBXGroup;
 			children = (
 				F64E1C0F21043EA90031D7CB /* GoalApp */,
 				F64E1C0E21043EA90031D7CB /* Products */,
+				76C0AFCA841F1C4F4F1ED7D2 /* Pods */,
+				6DA012F82F945791B418F818 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +159,8 @@
 		F64E1C2821043FA60031D7CB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F6B313792104D86F00181596 /* HomeGoalTableViewCell.swift */,
+				F6B3137A2104D86F00181596 /* HomeGoalTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -158,9 +188,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F64E1C1F21043EAB0031D7CB /* Build configuration list for PBXNativeTarget "GoalApp" */;
 			buildPhases = (
+				6183872833485D85E0C90BBD /* [CP] Check Pods Manifest.lock */,
 				F64E1C0921043EA90031D7CB /* Sources */,
 				F64E1C0A21043EA90031D7CB /* Frameworks */,
 				F64E1C0B21043EA90031D7CB /* Resources */,
+				528B72AC7F274C6BDE4B7222 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -209,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6B3137C2104D86F00181596 /* HomeGoalTableViewCell.xib in Resources */,
 				F64E1C1B21043EAB0031D7CB /* LaunchScreen.storyboard in Resources */,
 				F64E1C1821043EAB0031D7CB /* Assets.xcassets in Resources */,
 			);
@@ -216,11 +249,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		528B72AC7F274C6BDE4B7222 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GoalApp/Pods-GoalApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoalApp/Pods-GoalApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6183872833485D85E0C90BBD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoalApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F64E1C0921043EA90031D7CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6B3137B2104D86F00181596 /* HomeGoalTableViewCell.swift in Sources */,
 				F64E1C38210457210031D7CB /* CreateViewController.swift in Sources */,
 				F64E1C2D2104425C0031D7CB /* UIView+Extensions.swift in Sources */,
 				F64E1C332104453A0031D7CB /* Goal.swift in Sources */,
@@ -362,6 +437,7 @@
 		};
 		F64E1C2021043EAB0031D7CB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44F24455D5A6316F2AE50F2F /* Pods-GoalApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -380,6 +456,7 @@
 		};
 		F64E1C2121043EAB0031D7CB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D65172195380AA1CC08439C4 /* Pods-GoalApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

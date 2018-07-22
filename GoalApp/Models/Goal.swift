@@ -7,15 +7,26 @@
 //
 
 import UIKit
+import RealmSwift
 
-struct Goal: Decodable {
-    let name: String
-    let completed: Bool
-    let monthsToComplete: Int
+class Goal: Object {
+    @objc dynamic var name: String = ""
+    @objc dynamic var monthsToComplete: Int = -1
+    @objc private dynamic var statusType: Int = Status.notStarted.rawValue
     
-    init(name: String, completed: Bool, monthsToComplete: Int) {
-        self.name = name
-        self.completed = completed
-        self.monthsToComplete = monthsToComplete
+    var status: Status {
+        get {
+            return Status(rawValue: statusType)!
+        }
+        set {
+            statusType = newValue.rawValue
+        }
     }
+}
+
+public enum Status: Int {
+    case notStarted = 1
+    case inProgress = 2
+    case completed = 3
+    case didNotFinish = 4
 }
