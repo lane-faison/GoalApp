@@ -11,7 +11,14 @@ import RealmSwift
 
 class CreateViewController: UIViewController {
     
-    var goal = Goal()
+    private var nameTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.borderWidth = 2.0
+        textField.layer.cornerRadius = 2.0
+        return textField
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +26,7 @@ class CreateViewController: UIViewController {
         view.backgroundColor = .white
         
         setupNavBar()
+        setupNameTextField()
     }
 }
 
@@ -28,16 +36,10 @@ extension CreateViewController {
     }
     
     @objc func saveTapped() {
-        if let realm = try? Realm() {
-            goal.name = "Test name"
-            goal.monthsToComplete = 2
-            goal.status = .notStarted
-            
-            try? realm.write {
-                realm.add(goal)
-            }
-            
-            navigationController?.popViewController(animated: true)
+        guard let name = nameTextField.text, !name.isEmpty  else { return }
+        
+        GoalsHelper().createGoal(name: name, monthsToComplete: 6) {
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }
@@ -50,6 +52,16 @@ extension CreateViewController {
         
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+    
+    private func setupNameTextField() {
+        view.addSubview(nameTextField)
+        NSLayoutConstraint.activate([
+            nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            nameTextField.widthAnchor.constraint(equalToConstant: view.frame.size.width / 1.5),
+            nameTextField.heightAnchor.constraint(equalToConstant: 40.0)
+            ])
     }
 }
 

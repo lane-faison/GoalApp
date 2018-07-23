@@ -20,6 +20,7 @@
 		F64E1C38210457210031D7CB /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E1C37210457210031D7CB /* CreateViewController.swift */; };
 		F6B3137B2104D86F00181596 /* HomeGoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B313792104D86F00181596 /* HomeGoalTableViewCell.swift */; };
 		F6B3137C2104D86F00181596 /* HomeGoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6B3137A2104D86F00181596 /* HomeGoalTableViewCell.xib */; };
+		F6B313802105975500181596 /* HomeGoalTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3137F2105975500181596 /* HomeGoalTableViewCellModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		F64E1C37210457210031D7CB /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		F6B313792104D86F00181596 /* HomeGoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGoalTableViewCell.swift; sourceTree = "<group>"; };
 		F6B3137A2104D86F00181596 /* HomeGoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeGoalTableViewCell.xib; sourceTree = "<group>"; };
+		F6B3137F2105975500181596 /* HomeGoalTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGoalTableViewCellModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			children = (
 				F6B313792104D86F00181596 /* HomeGoalTableViewCell.swift */,
 				F6B3137A2104D86F00181596 /* HomeGoalTableViewCell.xib */,
+				F6B3137F2105975500181596 /* HomeGoalTableViewCellModel.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				F64E1C332104453A0031D7CB /* Goal.swift in Sources */,
 				F64E1C35210446EE0031D7CB /* GoalsHelper.swift in Sources */,
 				F64E1C31210443070031D7CB /* UIColor+Extensions.swift in Sources */,
+				F6B313802105975500181596 /* HomeGoalTableViewCellModel.swift in Sources */,
 				F64E1C1121043EA90031D7CB /* AppDelegate.swift in Sources */,
 				F64E1C2F210442E90031D7CB /* UIFont+Extensions.swift in Sources */,
 				F64E1C2A21043FFB0031D7CB /* HomeViewController.swift in Sources */,

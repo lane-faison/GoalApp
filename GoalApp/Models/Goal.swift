@@ -12,6 +12,7 @@ import RealmSwift
 class Goal: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var monthsToComplete: Int = -1
+    @objc dynamic var created: Date = Date()
     @objc private dynamic var statusType: Int = Status.notStarted.rawValue
     
     var status: Status {
@@ -21,6 +22,14 @@ class Goal: Object {
         set {
             statusType = newValue.rawValue
         }
+    }
+    
+    convenience init(name: String, monthsToComplete: Int, created: Date, status: Status) {
+        self.init()
+        self.name = name
+        self.monthsToComplete = monthsToComplete
+        self.created = created
+        self.status = status
     }
 }
 

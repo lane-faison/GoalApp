@@ -20,6 +20,35 @@ struct GoalsHelper {
         }
     }
     
+    func createGoal(name: String, monthsToComplete: Int, completion: (() -> Void)?) {
+        if let realm = try? Realm() {
+            let goal = Goal()
+            goal.name = name
+            goal.monthsToComplete = monthsToComplete
+            
+            try? realm.write {
+                realm.add(goal)
+                completion?()
+            }
+        }
+    }
+    
+    func updateGoal(_ goal: Goal, with status: Status) {
+        if let realm = try? Realm() {
+            try? realm.write {
+                goal.status = status
+            }
+        }
+    }
+    
+    func deleteGoal(_ goal: Goal) {
+        if let realm = try? Realm() {
+            try? realm.write {
+                realm.delete(goal)
+            }
+        }
+    }
+    
     func getIcon(for status: Status) -> UIImage? {
         switch status {
         case .notStarted:
@@ -36,13 +65,13 @@ struct GoalsHelper {
     func getIconTintColor(for status: Status) -> UIColor {
         switch status {
         case .notStarted:
-            return UIColor.gray
+            return UIColor.primaryLightGreen
         case .inProgress:
-            return UIColor.blue
+            return UIColor.primaryBlue
         case .completed:
-            return UIColor.green
+            return UIColor.primaryGreen
         case .didNotFinish:
-            return UIColor.red
+            return UIColor.primaryRed
         }
     }
 }

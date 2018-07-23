@@ -18,11 +18,12 @@ class HomeViewController: UIViewController {
     }()
     
     var goals: Results<Goal>?
+    private lazy var goalsHelper = GoalsHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        goals = GoalsHelper().getGoals()
+        goals = goalsHelper.getGoals()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -53,9 +54,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let goal = goals?[indexPath.row] else { return UITableViewCell() }
         
-        cell.nameLabel.text = goal.name
-        cell.iconImageView.image = GoalsHelper().getIcon(for: goal.status)
-        cell.iconImageView.tintColor = GoalsHelper().getIconTintColor(for: goal.status)
+        let cellViewModel = HomeGoalTableViewCellModel(goal: goal)
+        cell.configure(with: cellViewModel)
         
         return cell
     }
@@ -65,7 +65,20 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        return
+        guard let goal = goals?[indexPath.row] else { return }
+        
+        switch goal.status {
+        case .notStarted:
+            goalsHelper.updateGoal(goal, with: .inProgress)
+        case .inProgress:
+            goalsHelper.updateGoal(goal, with: .completed)
+        case .completed:
+            goalsHelper.updateGoal(goal, with: .didNotFinish)
+        case .didNotFinish:
+            goalsHelper.updateGoal(goal, with: .notStarted)
+        }
+        
+        tableView.reloadRows(at: [indexPath], with: .fade)
     }
 }
 
