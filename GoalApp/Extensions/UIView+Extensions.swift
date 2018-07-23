@@ -9,6 +9,9 @@
 import UIKit
 
 extension UIView {
+    
+    // MARK: Animations
+    
     func startRotating(duration: Double = 1) {
         let kAnimationKey = "rotation"
         

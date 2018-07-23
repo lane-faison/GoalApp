@@ -13,6 +13,8 @@ class HomeViewController: UIViewController {
     
     let tableView: UITableView = {
         let tableView = UITableView()
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor.primaryLightGray
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -61,7 +63,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 80
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

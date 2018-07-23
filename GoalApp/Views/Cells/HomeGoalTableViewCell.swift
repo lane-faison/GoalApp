@@ -22,6 +22,9 @@ class HomeGoalTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         selectionStyle = .none
+        
+        view.layer.backgroundColor = UIColor.white.cgColor
+        view.layer.cornerRadius = view.bounds.size.height / 8
     }
     
     func configure(with viewModel: HomeGoalTableViewCellModel) {
