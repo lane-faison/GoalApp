@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoalApp/Views/Cells/HomeGoalTableViewCell.swift"
-            timestampString = "554017670.300343"
+            timestampString = "554090944.848636"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "rotateIcon()"
             landmarkType = "7">
          </BreakpointContent>

@@ -21,6 +21,8 @@
 		F6B3137B2104D86F00181596 /* HomeGoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B313792104D86F00181596 /* HomeGoalTableViewCell.swift */; };
 		F6B3137C2104D86F00181596 /* HomeGoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6B3137A2104D86F00181596 /* HomeGoalTableViewCell.xib */; };
 		F6B313802105975500181596 /* HomeGoalTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3137F2105975500181596 /* HomeGoalTableViewCellModel.swift */; };
+		F6B313832106C34200181596 /* TimeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B313822106C34200181596 /* TimeButtonView.swift */; };
+		F6B313852106D60700181596 /* TimeButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B313842106D60700181596 /* TimeButtonViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		F6B313792104D86F00181596 /* HomeGoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGoalTableViewCell.swift; sourceTree = "<group>"; };
 		F6B3137A2104D86F00181596 /* HomeGoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeGoalTableViewCell.xib; sourceTree = "<group>"; };
 		F6B3137F2105975500181596 /* HomeGoalTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGoalTableViewCellModel.swift; sourceTree = "<group>"; };
+		F6B313822106C34200181596 /* TimeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeButtonView.swift; sourceTree = "<group>"; };
+		F6B313842106D60700181596 /* TimeButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeButtonViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +101,7 @@
 				F64E1C2221043F740031D7CB /* Extensions */,
 				F64E1C2421043F8A0031D7CB /* Helpers */,
 				F64E1C2321043F7B0031D7CB /* Models */,
-				F64E1C2521043F910031D7CB /* Views */,
+				F64E1C2521043F910031D7CB /* Views, Buttons, Cells, Controllers */,
 				F64E1C1021043EA90031D7CB /* AppDelegate.swift */,
 				F64E1C1721043EAB0031D7CB /* Assets.xcassets */,
 				F64E1C1921043EAB0031D7CB /* LaunchScreen.storyboard */,
@@ -132,14 +136,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		F64E1C2521043F910031D7CB /* Views */ = {
+		F64E1C2521043F910031D7CB /* Views, Buttons, Cells, Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F64E1C2821043FA60031D7CB /* Cells */,
 				F64E1C2721043F9E0031D7CB /* Buttons */,
+				F64E1C2821043FA60031D7CB /* Cells */,
+				F6B313812106C2DB00181596 /* Views */,
 				F64E1C2621043F980031D7CB /* View Controllers */,
 			);
-			path = Views;
+			path = "Views, Buttons, Cells, Controllers";
 			sourceTree = "<group>";
 		};
 		F64E1C2621043F980031D7CB /* View Controllers */ = {
@@ -182,6 +187,15 @@
 				F64E1C37210457210031D7CB /* CreateViewController.swift */,
 			);
 			path = Create;
+			sourceTree = "<group>";
+		};
+		F6B313812106C2DB00181596 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F6B313822106C34200181596 /* TimeButtonView.swift */,
+				F6B313842106D60700181596 /* TimeButtonViewModel.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,8 +319,10 @@
 				F64E1C35210446EE0031D7CB /* GoalsHelper.swift in Sources */,
 				F64E1C31210443070031D7CB /* UIColor+Extensions.swift in Sources */,
 				F6B313802105975500181596 /* HomeGoalTableViewCellModel.swift in Sources */,
+				F6B313852106D60700181596 /* TimeButtonViewModel.swift in Sources */,
 				F64E1C1121043EA90031D7CB /* AppDelegate.swift in Sources */,
 				F64E1C2F210442E90031D7CB /* UIFont+Extensions.swift in Sources */,
+				F6B313832106C34200181596 /* TimeButtonView.swift in Sources */,
 				F64E1C2A21043FFB0031D7CB /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

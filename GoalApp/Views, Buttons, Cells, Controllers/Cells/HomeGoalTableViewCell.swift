@@ -44,7 +44,7 @@ class HomeGoalTableViewCell: UITableViewCell {
         subView.layer.borderColor = UIColor.clear.cgColor
         subView.layer.masksToBounds = true
         
-        layer.shadowOpacity = 0.15
+        layer.shadowOpacity = 0.1
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowRadius = subView.bounds.size.height / 8
         layer.shadowColor = UIColor.black.cgColor

@@ -95,8 +95,9 @@ extension HomeViewController {
     
     private func setupNavBar() {
         title = "Goals"
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToCreateGoal))
+        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToCreateGoal))
+        rightBarButtonItem.tintColor = UIColor.black
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
     private func setupTableView() {
