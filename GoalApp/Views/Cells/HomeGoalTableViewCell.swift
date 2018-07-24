@@ -9,11 +9,11 @@
 import UIKit
 
 class HomeGoalTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var view: UIView!
-    @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var dueDateLabel: UILabel!
+    
+    @IBOutlet private weak var subView: UIView!
+    @IBOutlet private weak var iconImageView: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var dueDateLabel: UILabel!
     
     var goal: Goal?
     private var goalsHelper = GoalsHelper()
@@ -23,8 +23,7 @@ class HomeGoalTableViewCell: UITableViewCell {
         
         selectionStyle = .none
         
-        view.layer.backgroundColor = UIColor.white.cgColor
-        view.layer.cornerRadius = view.bounds.size.height / 8
+        setupShadow()
     }
     
     func configure(with viewModel: HomeGoalTableViewCellModel) {
@@ -37,6 +36,19 @@ class HomeGoalTableViewCell: UITableViewCell {
                 iconImageView.startRotating(duration: 1.5)
             }
         }
+    }
+    
+    private func setupShadow() {
+        subView.layer.cornerRadius = subView.bounds.size.height / 8
+        subView.layer.borderWidth = 1
+        subView.layer.borderColor = UIColor.clear.cgColor
+        subView.layer.masksToBounds = true
+        
+        layer.shadowOpacity = 0.15
+        layer.shadowOffset = CGSize(width: 0, height: 1)
+        layer.shadowRadius = subView.bounds.size.height / 8
+        layer.shadowColor = UIColor.black.cgColor
+        layer.masksToBounds = false
     }
     
     private func rotateIcon() {

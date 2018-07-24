@@ -58,6 +58,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="mRL-eY-Bpt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="JQX-Eq-viB"/>
                     <constraint firstAttribute="bottom" secondItem="mRL-eY-Bpt" secondAttribute="bottom" constant="10" id="nYZ-vX-IGl"/>
@@ -71,7 +72,7 @@
                 <outlet property="dueDateLabel" destination="cek-sC-clM" id="A4Y-BR-dDN"/>
                 <outlet property="iconImageView" destination="HMi-Nr-XJB" id="dxJ-Fa-CLP"/>
                 <outlet property="nameLabel" destination="2Bl-Qr-pY2" id="ZLj-Gb-Zd0"/>
-                <outlet property="view" destination="mRL-eY-Bpt" id="i87-hC-OYZ"/>
+                <outlet property="subView" destination="mRL-eY-Bpt" id="6bv-Zj-Hgm"/>
             </connections>
             <point key="canvasLocation" x="-85" y="67.5"/>
         </tableViewCell>
