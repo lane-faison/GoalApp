@@ -11,7 +11,12 @@ import RealmSwift
 
 class CreateViewController: UIViewController {
     
-    let options: [String] = ["1 day", "1 week", "1 month", "6 months", "1 year", "5 years"]
+    let optionButtons: [TimeButton] = [TimeButton(frame: .zero, type: TimeButtonType.oneDay),
+                                       TimeButton(frame: .zero, type: TimeButtonType.oneWeek),
+                                       TimeButton(frame: .zero, type: TimeButtonType.oneMonth),
+                                       TimeButton(frame: .zero, type: TimeButtonType.sixMonths),
+                                       TimeButton(frame: .zero, type: TimeButtonType.oneYear),
+                                       TimeButton(frame: .zero, type: TimeButtonType.fiveYears)]
     
     private var nameTextField: UITextField = {
         let textField = UITextField()
@@ -56,20 +61,6 @@ extension CreateViewController {
     }
 }
 
-extension CreateViewController: TimeButtonViewDelegate {
-    func userTappedButton() {
-        for view in stackView.subviews {
-            if let view = view as? TimeButtonView {
-                if view.isSelected == true {
-                    view.changeAppearance(isSelected: false)
-                }
-            }
-        }
-    }
-    
-    
-}
-
 extension CreateViewController {
     
     private func setupNavBar() {
@@ -95,15 +86,10 @@ extension CreateViewController {
     
     private func setupTimeStackView() {
         
-        for option in options {
-            let timeButtonView = TimeButtonView()
-            let timeButtonViewModel = TimeButtonViewModel(title: option, tapAction: {
-                print("We HERE")
-            })
-            timeButtonView.configure(with: timeButtonViewModel)
-            timeButtonView.delegate = self
-            timeButtonView.translatesAutoresizingMaskIntoConstraints = false
-            stackView.addArrangedSubview(timeButtonView)
+        for (index, optionButton) in optionButtons.enumerated() {
+            optionButton.tag = index
+            optionButton.addTarget(self, action: #selector(timeButtonTapped), for: .touchUpInside)
+            stackView.addArrangedSubview(optionButton)
         }
         
         view.addSubview(stackView)
@@ -114,6 +100,21 @@ extension CreateViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24.0),
             stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24.0)
             ])
+    }
+    
+    @objc private func timeButtonTapped(sender: UIButton) {
+        guard let sender = sender as? TimeButton else { return }
+        
+        for optionButton in optionButtons {
+            if optionButton.tag != sender.tag {
+                optionButton.isSelected = false
+            }
+        }
+        sender.isSelected = !sender.isSelected
+        
+        if sender.type == TimeButtonType.oneYear {
+            print("You picked one year") // This works
+        }
     }
 }
 
