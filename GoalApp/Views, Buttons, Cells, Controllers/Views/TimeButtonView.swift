@@ -18,6 +18,8 @@ class TimeButtonView: UIView {
     
     var delegate: TimeButtonViewDelegate?
     
+    var isSelected: Bool = false
+    
     let button: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +51,11 @@ class TimeButtonView: UIView {
     @objc private func buttonTapped() {
         viewModel?.buttonTapped()
         
+        isSelected = !isSelected
+        
         delegate?.userTappedButton()
+        
+        changeAppearance(isSelected: isSelected)
     }
     
     private func setupView() {
@@ -66,11 +72,9 @@ class TimeButtonView: UIView {
     
     func changeAppearance(isSelected: Bool) {
         if isSelected {
-            viewModel?.isSelected = true
             button.backgroundColor = .primaryGreen
             button.setTitleColor(.white, for: .normal)
         } else {
-            viewModel?.isSelected = false
             button.backgroundColor = .white
             button.setTitleColor(.black, for: .normal)
         }

@@ -60,7 +60,7 @@ extension CreateViewController: TimeButtonViewDelegate {
     func userTappedButton() {
         for view in stackView.subviews {
             if let view = view as? TimeButtonView {
-                if view.viewModel?.isSelected == true {
+                if view.isSelected == true {
                     view.changeAppearance(isSelected: false)
                 }
             }
