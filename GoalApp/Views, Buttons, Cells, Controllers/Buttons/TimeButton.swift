@@ -8,25 +8,16 @@
 
 import UIKit
 
-enum TimeButtonType: String {
-    case oneDay = "1 Day"
-    case oneWeek = "1 Week"
-    case oneMonth = "1 Month"
-    case sixMonths = "6 Months"
-    case oneYear = "1 Year"
-    case fiveYears = "5 Years"
-}
-
 class TimeButton: UIButton {
     
-    var type: TimeButtonType?
+    var completionTime: CompletionTime?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(frame: CGRect, type: TimeButtonType) {
-        self.type = type
+    init(frame: CGRect, completionTime: CompletionTime) {
+        self.completionTime = completionTime
         super.init(frame: frame)
         initialize()
     }
@@ -44,7 +35,7 @@ class TimeButton: UIButton {
         setTitleColor(.black, for: .normal)
         setTitleColor(UIColor.primaryGreen, for: .selected)
         
-        setTitle(type?.rawValue, for: .normal)
-        setTitle(type?.rawValue, for: .selected)
+        setTitle(completionTime?.rawValue, for: .normal)
+        setTitle(completionTime?.rawValue, for: .selected)
     }
 }

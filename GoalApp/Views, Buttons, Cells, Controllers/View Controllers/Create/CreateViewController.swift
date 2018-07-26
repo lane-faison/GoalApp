@@ -11,12 +11,12 @@ import RealmSwift
 
 class CreateViewController: UIViewController {
     
-    let optionButtons: [TimeButton] = [TimeButton(frame: .zero, type: TimeButtonType.oneDay),
-                                       TimeButton(frame: .zero, type: TimeButtonType.oneWeek),
-                                       TimeButton(frame: .zero, type: TimeButtonType.oneMonth),
-                                       TimeButton(frame: .zero, type: TimeButtonType.sixMonths),
-                                       TimeButton(frame: .zero, type: TimeButtonType.oneYear),
-                                       TimeButton(frame: .zero, type: TimeButtonType.fiveYears)]
+    let optionButtons: [TimeButton] = [TimeButton(frame: .zero, completionTime: CompletionTime.oneDay),
+                                       TimeButton(frame: .zero, completionTime: CompletionTime.oneWeek),
+                                       TimeButton(frame: .zero, completionTime: CompletionTime.oneMonth),
+                                       TimeButton(frame: .zero, completionTime: CompletionTime.sixMonths),
+                                       TimeButton(frame: .zero, completionTime: CompletionTime.oneYear),
+                                       TimeButton(frame: .zero, completionTime: CompletionTime.fiveYears)]
     
     private var nameTextField: UITextField = {
         let textField = UITextField()
@@ -55,7 +55,7 @@ extension CreateViewController {
     @objc func saveTapped() {
         guard let name = nameTextField.text, !name.isEmpty  else { return }
         
-        GoalsHelper().createGoal(name: name, monthsToComplete: 6) {
+        GoalsHelper().createGoal(name: name, completionTime: .oneDay) {
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -103,7 +103,8 @@ extension CreateViewController {
     }
     
     @objc private func timeButtonTapped(sender: UIButton) {
-        guard let sender = sender as? TimeButton else { return }
+        guard let sender = sender as? TimeButton,
+            let type = sender.completionTime else { return }
         
         for optionButton in optionButtons {
             if optionButton.tag != sender.tag {
@@ -111,10 +112,6 @@ extension CreateViewController {
             }
         }
         sender.isSelected = !sender.isSelected
-        
-        if sender.type == TimeButtonType.oneYear {
-            print("You picked one year") // This works
-        }
     }
 }
 

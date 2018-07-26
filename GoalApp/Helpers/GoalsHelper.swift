@@ -13,18 +13,18 @@ struct GoalsHelper {
     
     func getGoals() -> Results<Goal>? {
         if let realm = try? Realm() {
-            let goals = realm.objects(Goal.self).sorted(byKeyPath: "monthsToComplete", ascending: true)
+            let goals = realm.objects(Goal.self)
             return goals
         } else {
             return nil
         }
     }
     
-    func createGoal(name: String, monthsToComplete: Int, completion: (() -> Void)?) {
+    func createGoal(name: String, completionTime: CompletionTime, completion: (() -> Void)?) {
         if let realm = try? Realm() {
             let goal = Goal()
             goal.name = name
-            goal.monthsToComplete = monthsToComplete
+            goal.completionTime = completionTime
             
             try? realm.write {
                 realm.add(goal)
