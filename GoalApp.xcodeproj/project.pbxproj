@@ -23,6 +23,7 @@
 		F6B313802105975500181596 /* HomeGoalTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3137F2105975500181596 /* HomeGoalTableViewCellModel.swift */; };
 		F6B313832106C34200181596 /* TimeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B313822106C34200181596 /* TimeButton.swift */; };
 		F6B31387210C342800181596 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B31386210C342800181596 /* SubmitButton.swift */; };
+		F6B3138A210CA6A100181596 /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B31389210CA6A100181596 /* PrimaryTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		F6B3137F2105975500181596 /* HomeGoalTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGoalTableViewCellModel.swift; sourceTree = "<group>"; };
 		F6B313822106C34200181596 /* TimeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeButton.swift; sourceTree = "<group>"; };
 		F6B31386210C342800181596 /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
+		F6B31389210CA6A100181596 /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		F64E1C2521043F910031D7CB /* Views, Buttons, Cells, Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F6B31388210CA68800181596 /* Text Fields */,
 				F64E1C2721043F9E0031D7CB /* Buttons */,
 				F64E1C2821043FA60031D7CB /* Cells */,
 				F6B313812106C2DB00181596 /* Views */,
@@ -196,6 +199,14 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F6B31388210CA68800181596 /* Text Fields */ = {
+			isa = PBXGroup;
+			children = (
+				F6B31389210CA6A100181596 /* PrimaryTextField.swift */,
+			);
+			path = "Text Fields";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +331,7 @@
 				F64E1C35210446EE0031D7CB /* GoalsHelper.swift in Sources */,
 				F64E1C31210443070031D7CB /* UIColor+Extensions.swift in Sources */,
 				F6B313802105975500181596 /* HomeGoalTableViewCellModel.swift in Sources */,
+				F6B3138A210CA6A100181596 /* PrimaryTextField.swift in Sources */,
 				F64E1C1121043EA90031D7CB /* AppDelegate.swift in Sources */,
 				F64E1C2F210442E90031D7CB /* UIFont+Extensions.swift in Sources */,
 				F6B313832106C34200181596 /* TimeButton.swift in Sources */,

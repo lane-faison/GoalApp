@@ -14,26 +14,12 @@ class CreateViewController: UIViewController {
     var optionButtons: [TimeButton] = {
         var array: [TimeButton] = []
         CompletionTime.allValues.forEach {
-            array.append(TimeButton(frame: .zero, completionTime: $0))
+            array.append(TimeButton(completionTime: $0))
         }
         return array
     }()
     
-    private var nameTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .white
-        textField.placeholder = "*required"
-        textField.textAlignment = .right
-        return textField
-    }()
-    
-    private var nameTextFieldLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Goal name:"
-        return label
-    }()
+    private var nameTextField = PrimaryTextField(type: .required)
     
     private var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -86,17 +72,12 @@ extension CreateViewController {
     
     private func setupNameTextField() {
         view.addSubview(nameTextField)
+        nameTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             nameTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 64.0),
             nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             nameTextField.heightAnchor.constraint(equalToConstant: 50.0)
-            ])
-        
-        nameTextField.addSubview(nameTextFieldLabel)
-        NSLayoutConstraint.activate([
-            nameTextFieldLabel.centerYAnchor.constraint(equalTo: nameTextField.centerYAnchor),
-            nameTextFieldLabel.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor, constant: 16.0)
             ])
     }
     

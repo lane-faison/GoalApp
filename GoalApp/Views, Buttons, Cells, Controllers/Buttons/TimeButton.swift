@@ -22,9 +22,9 @@ class TimeButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(frame: CGRect, completionTime: CompletionTime) {
+    init(completionTime: CompletionTime) {
         self.completionTime = completionTime
-        super.init(frame: frame)
+        super.init(frame: .zero)
         initialize()
     }
     
