@@ -11,38 +11,53 @@ import RealmSwift
 
 class CreateViewController: UIViewController {
     
-    let optionButtons: [TimeButton] = [TimeButton(frame: .zero, completionTime: CompletionTime.oneDay),
-                                       TimeButton(frame: .zero, completionTime: CompletionTime.oneWeek),
-                                       TimeButton(frame: .zero, completionTime: CompletionTime.oneMonth),
-                                       TimeButton(frame: .zero, completionTime: CompletionTime.sixMonths),
-                                       TimeButton(frame: .zero, completionTime: CompletionTime.oneYear),
-                                       TimeButton(frame: .zero, completionTime: CompletionTime.fiveYears)]
+    var optionButtons: [TimeButton] = {
+        var array: [TimeButton] = []
+        CompletionTime.allValues.forEach {
+            array.append(TimeButton(frame: .zero, completionTime: $0))
+        }
+        return array
+    }()
     
     private var nameTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.layer.borderColor = UIColor.black.cgColor
-        textField.layer.borderWidth = 2.0
-        textField.layer.cornerRadius = 2.0
+        textField.backgroundColor = .white
+        textField.placeholder = "*required"
+        textField.textAlignment = .right
         return textField
+    }()
+    
+    private var nameTextFieldLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Goal name:"
+        return label
     }()
     
     private var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 8.0
+        stackView.spacing = -1
         stackView.distribution = .fillEqually
         return stackView
+    }()
+    
+    private var submitButton: SubmitButton = {
+        let button = SubmitButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.primaryLightGray
         
         setupNavBar()
         setupNameTextField()
+        setupSubmitButton()
         setupTimeStackView()
     }
 }
@@ -52,7 +67,7 @@ extension CreateViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func saveTapped() {
+    @objc func submitTapped() {
         guard let name = nameTextField.text, !name.isEmpty  else { return }
         
         GoalsHelper().createGoal(name: name, completionTime: .oneDay) {
@@ -65,23 +80,35 @@ extension CreateViewController {
     
     private func setupNavBar() {
         let leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
-        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
-        
         leftBarButtonItem.tintColor = UIColor.primaryRed
-        rightBarButtonItem.tintColor = UIColor.black
-        
         navigationItem.leftBarButtonItem = leftBarButtonItem
-        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
     private func setupNameTextField() {
         view.addSubview(nameTextField)
         NSLayoutConstraint.activate([
-            nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            nameTextField.widthAnchor.constraint(equalToConstant: view.frame.size.width / 1.5),
-            nameTextField.heightAnchor.constraint(equalToConstant: 40.0)
+            nameTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 64.0),
+            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            nameTextField.heightAnchor.constraint(equalToConstant: 50.0)
             ])
+        
+        nameTextField.addSubview(nameTextFieldLabel)
+        NSLayoutConstraint.activate([
+            nameTextFieldLabel.centerYAnchor.constraint(equalTo: nameTextField.centerYAnchor),
+            nameTextFieldLabel.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor, constant: 16.0)
+            ])
+    }
+    
+    private func setupSubmitButton() {
+        view.addSubview(submitButton)
+        NSLayoutConstraint.activate([
+            submitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            submitButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            submitButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            submitButton.heightAnchor.constraint(equalToConstant: 64.0)
+            ])
+        submitButton.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
     }
     
     private func setupTimeStackView() {
@@ -96,9 +123,9 @@ extension CreateViewController {
         
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 24.0),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24.0),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24.0),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24.0)
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: submitButton.topAnchor, constant: -1 * view.frame.size.height / 4)
             ])
     }
     
@@ -114,4 +141,3 @@ extension CreateViewController {
         sender.isSelected = !sender.isSelected
     }
 }
-

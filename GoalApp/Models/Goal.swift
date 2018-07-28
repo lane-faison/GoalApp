@@ -34,11 +34,10 @@ class Goal: Object {
         }
     }
     
-    convenience init(name: String, completionTime: CompletionTime, created: Date, status: Status) {
+    convenience init(name: String, completionTime: CompletionTime, status: Status) {
         self.init()
         self.name = name
         self.completionTime = completionTime
-        self.created = created
         self.status = status
     }
 }
@@ -57,4 +56,6 @@ public enum CompletionTime: String {
     case sixMonths = "6 Months"
     case oneYear = "1 Year"
     case fiveYears = "5 Years"
+    
+    static let allValues = [oneDay, oneWeek, oneMonth, sixMonths, oneYear, fiveYears]
 }

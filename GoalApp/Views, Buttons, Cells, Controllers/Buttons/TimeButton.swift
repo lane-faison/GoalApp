@@ -12,6 +12,12 @@ class TimeButton: UIButton {
     
     var completionTime: CompletionTime?
     
+    override var isSelected: Bool {
+        didSet {
+            backgroundColor = isSelected ? UIColor.primaryGreen : UIColor.white
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -28,12 +34,13 @@ class TimeButton: UIButton {
     }
     
     private func initialize() {
+        backgroundColor = .white
+        
         layer.borderColor = UIColor.primaryGreen.cgColor
         layer.borderWidth = 1.0
-        layer.cornerRadius = 5.0
         
         setTitleColor(.black, for: .normal)
-        setTitleColor(UIColor.primaryGreen, for: .selected)
+        setTitleColor(.white, for: .selected)
         
         setTitle(completionTime?.rawValue, for: .normal)
         setTitle(completionTime?.rawValue, for: .selected)
