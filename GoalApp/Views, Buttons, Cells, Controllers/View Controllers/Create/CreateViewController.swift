@@ -21,6 +21,13 @@ class CreateViewController: UIViewController {
     
     private var nameTextField = PrimaryTextField(type: .required)
     
+    private var chooseLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Choose one:"
+        return label
+    }()
+    
     private var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,20 +37,26 @@ class CreateViewController: UIViewController {
         return stackView
     }()
     
-    private var submitButton: SubmitButton = {
-        let button = SubmitButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    private var buttonStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.spacing = 1.0
+        stackView.distribution = .fillEqually
+        return stackView
     }()
+    
+    private var cancelButton = PrimaryButton(type: .cancel)
+    private var submitButton = PrimaryButton(type: .submit)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.primaryLightGray
         
-        setupNavBar()
         setupNameTextField()
-        setupSubmitButton()
+        setupChooseLabel()
+        setupButtons()
         setupTimeStackView()
     }
 }
@@ -64,12 +77,6 @@ extension CreateViewController {
 
 extension CreateViewController {
     
-    private func setupNavBar() {
-        let leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
-        leftBarButtonItem.tintColor = UIColor.primaryRed
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-    }
-    
     private func setupNameTextField() {
         view.addSubview(nameTextField)
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -81,14 +88,31 @@ extension CreateViewController {
             ])
     }
     
-    private func setupSubmitButton() {
-        view.addSubview(submitButton)
+    private func setupChooseLabel() {
+        view.addSubview(chooseLabel)
+        chooseLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            submitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            submitButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            submitButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            submitButton.heightAnchor.constraint(equalToConstant: 64.0)
+            chooseLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 24.0),
+            chooseLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16.0),
+            chooseLabel.trailingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor),
+            chooseLabel.heightAnchor.constraint(equalToConstant: 24.0)
             ])
+    }
+    
+    private func setupButtons() {
+        buttonStackView.addArrangedSubview(cancelButton)
+        buttonStackView.addArrangedSubview(submitButton)
+        
+        view.addSubview(buttonStackView)
+        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            buttonStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            buttonStackView.heightAnchor.constraint(equalToConstant: 64.0)
+            ])
+        
+        cancelButton.addTarget(self, action: #selector(cancelTapped), for: .touchUpInside)
         submitButton.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
     }
     
@@ -103,7 +127,7 @@ extension CreateViewController {
         view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 24.0),
+            stackView.topAnchor.constraint(equalTo: chooseLabel.bottomAnchor, constant: 4.0),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: submitButton.topAnchor, constant: -1 * view.frame.size.height / 4)

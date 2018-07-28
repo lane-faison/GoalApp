@@ -8,14 +8,22 @@
 
 import UIKit
 
-class SubmitButton: UIButton {
+class PrimaryButton: UIButton {
+    
+    enum ButtonType {
+        case cancel
+        case submit
+    }
+    
+    var type: ButtonType
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(type: ButtonType) {
+        self.type = type
+        super.init(frame: .zero)
         initialize()
     }
     
@@ -25,10 +33,15 @@ class SubmitButton: UIButton {
     }
     
     private func initialize() {
-        backgroundColor = UIColor.primaryBlue
+        switch type {
+        case .cancel:
+            backgroundColor = UIColor.primaryRed
+            setTitle("Cancel", for: .normal)
+        case .submit:
+            backgroundColor = UIColor.primaryGreen
+            setTitle("Submit", for: .normal)
+        }
         
         setTitleColor(.white, for: .normal)
-        
-        setTitle("Submit", for: .normal)
     }
 }
