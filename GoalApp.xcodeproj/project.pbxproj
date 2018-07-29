@@ -24,6 +24,7 @@
 		F6B313832106C34200181596 /* TimeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B313822106C34200181596 /* TimeButton.swift */; };
 		F6B3138A210CA6A100181596 /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B31389210CA6A100181596 /* PrimaryTextField.swift */; };
 		F6B3138C210CB36E00181596 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3138B210CB36E00181596 /* PrimaryButton.swift */; };
+		F6B3138E210E33C600181596 /* HomeTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3138D210E33C600181596 /* HomeTableViewHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		F6B313822106C34200181596 /* TimeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeButton.swift; sourceTree = "<group>"; };
 		F6B31389210CA6A100181596 /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 		F6B3138B210CB36E00181596 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		F6B3138D210E33C600181596 /* HomeTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 		F6B313812106C2DB00181596 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F6B3138D210E33C600181596 /* HomeTableViewHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				F6B3137B2104D86F00181596 /* HomeGoalTableViewCell.swift in Sources */,
 				F64E1C38210457210031D7CB /* CreateViewController.swift in Sources */,
 				F64E1C2D2104425C0031D7CB /* UIView+Extensions.swift in Sources */,
+				F6B3138E210E33C600181596 /* HomeTableViewHeader.swift in Sources */,
 				F64E1C332104453A0031D7CB /* Goal.swift in Sources */,
 				F64E1C35210446EE0031D7CB /* GoalsHelper.swift in Sources */,
 				F64E1C31210443070031D7CB /* UIColor+Extensions.swift in Sources */,

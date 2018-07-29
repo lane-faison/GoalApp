@@ -53,7 +53,7 @@ public enum CompletionTime: String {
     case oneDay = "1 Day"
     case oneWeek = "1 Week"
     case oneMonth = "1 Month"
-    case sixMonths = "6 Months"
+    case sixMonths = "6 Month"
     case oneYear = "1 Year"
     case fiveYears = "5 Years"
     

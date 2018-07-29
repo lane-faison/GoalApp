@@ -11,12 +11,13 @@ import RealmSwift
 
 class HomeViewController: UIViewController {
     
+    let headerHeight: CGFloat = 40.0
+    
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor.primaryLightGray
-        
+        tableView.backgroundColor = UIColor.primaryDarkGray
         return tableView
     }()
     
@@ -45,9 +46,20 @@ class HomeViewController: UIViewController {
 // MARK: -TableView methods
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return tableGoalData?[section].0.rawValue
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let title = tableGoalData?[section].0.rawValue else { return nil }
+        
+        let headerFrame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: headerHeight)
+        
+        let headerView = HomeTableViewHeader(frame: headerFrame, title: "\(title) Goals")
+        
+        return headerView
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return headerHeight
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         guard let completionTimesSet = goalsHelper.getCompletionTimesSet() else { return 0 }
         

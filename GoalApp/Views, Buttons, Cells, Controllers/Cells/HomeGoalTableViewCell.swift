@@ -23,6 +23,7 @@ class HomeGoalTableViewCell: UITableViewCell {
         
         selectionStyle = .none
         
+        setupView()
         setupShadow()
     }
     
@@ -38,12 +39,14 @@ class HomeGoalTableViewCell: UITableViewCell {
         }
     }
     
+    private func setupView() {
+        backgroundColor = UIColor.primaryDarkGray
+        subView.backgroundColor = UIColor.primaryBlack
+        nameLabel.textColor = UIColor.primaryLightGray
+        dueDateLabel.textColor = UIColor.primaryLightGray
+    }
+    
     private func setupShadow() {
-        subView.layer.cornerRadius = subView.bounds.size.height / 8
-        subView.layer.borderWidth = 1
-        subView.layer.borderColor = UIColor.clear.cgColor
-        subView.layer.masksToBounds = true
-        
         layer.shadowOpacity = 0.1
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowRadius = subView.bounds.size.height / 8

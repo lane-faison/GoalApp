@@ -14,6 +14,8 @@ extension UIColor {
     static var primaryLightGreen: UIColor = hexStringToUIColor(hex: "#8BC34A")
     static var primaryBlue: UIColor = hexStringToUIColor(hex: "#2196F3")
     static var primaryLightGray: UIColor = hexStringToUIColor(hex: "EFEFEF")
+    static var primaryDarkGray: UIColor = hexStringToUIColor(hex: "444444")
+    static var primaryBlack: UIColor = hexStringToUIColor(hex: "222222")
     
     private static func hexStringToUIColor(hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()

@@ -9,5 +9,5 @@
 import UIKit
 
 extension UIFont {
-    
+    static let headerBold = systemFont(ofSize: 18.0, weight: .semibold)
 }
