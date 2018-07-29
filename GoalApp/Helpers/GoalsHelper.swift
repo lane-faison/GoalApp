@@ -9,15 +9,49 @@
 import Foundation
 import RealmSwift
 
+public typealias SectionData = (CompletionTime, [Goal])
+
 struct GoalsHelper {
     
-    func getGoals() -> Results<Goal>? {
+    private func getGoals() -> Results<Goal>? {
         if let realm = try? Realm() {
             let goals = realm.objects(Goal.self)
             return goals
         } else {
             return nil
         }
+    }
+    
+    func getCompletionTimesSet() -> Set<CompletionTime>? {
+        guard let goals = getGoals() else { return nil }
+        
+        var goalCategorySet = Set<CompletionTime>()
+        
+        for goal in goals {
+            if !goalCategorySet.contains(goal.completionTime) {
+                goalCategorySet.insert(goal.completionTime)
+            }
+        }
+        return goalCategorySet
+    }
+    
+    func getTableData() -> [SectionData]? {
+        guard let goals = getGoals(), let completionTimesSet = getCompletionTimesSet() else { return nil }
+        var tableData: [SectionData] = []
+        
+        for completionTime in completionTimesSet {
+            tableData.append((completionTime, []))
+        }
+        
+        for goal in goals {
+            if let index = tableData.index(where: { $0.0 == goal.completionTime }) {
+                tableData[index].1.append(goal)
+            }
+        }
+        
+        let sortedTableData = tableData.sorted(by: { $0.0.hashValue < $1.0.hashValue })
+        
+        return sortedTableData
     }
     
     func createGoal(name: String, completionTime: CompletionTime, completion: (() -> Void)?) {
@@ -72,6 +106,19 @@ struct GoalsHelper {
             return UIColor.primaryGreen
         case .didNotFinish:
             return UIColor.primaryRed
+        }
+    }
+    
+    func advanceGoalToNextStatus(for goal: Goal) {
+        switch goal.status {
+        case .notStarted:
+            updateGoal(goal, with: .inProgress)
+        case .inProgress:
+            updateGoal(goal, with: .completed)
+        case .completed:
+            updateGoal(goal, with: .didNotFinish)
+        case .didNotFinish:
+            updateGoal(goal, with: .notStarted)
         }
     }
 }

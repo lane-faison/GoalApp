@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class Goal: Object {
+public class Goal: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var timeToComplete: Int = -1
     @objc dynamic var created: Date = Date()

@@ -49,6 +49,8 @@ class CreateViewController: UIViewController {
     private var cancelButton = PrimaryButton(type: .cancel)
     private var submitButton = PrimaryButton(type: .submit)
     
+    private var selectedCompletionTime: CompletionTime?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,9 +69,9 @@ extension CreateViewController {
     }
     
     @objc func submitTapped() {
-        guard let name = nameTextField.text, !name.isEmpty  else { return }
+        guard let name = nameTextField.text, !name.isEmpty, let time = selectedCompletionTime  else { return }
         
-        GoalsHelper().createGoal(name: name, completionTime: .oneDay) { [weak self] in
+        GoalsHelper().createGoal(name: name, completionTime: time) { [weak self] in
             guard let strongSelf = self else { return }
             
             strongSelf.dismiss(animated: true, completion: nil)
@@ -138,7 +140,9 @@ extension CreateViewController {
     
     @objc private func timeButtonTapped(sender: UIButton) {
         guard let sender = sender as? TimeButton,
-            let type = sender.completionTime else { return }
+            let time = sender.completionTime else { return }
+        
+        selectedCompletionTime = time
         
         for optionButton in optionButtons {
             if optionButton.tag != sender.tag {

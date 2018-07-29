@@ -20,13 +20,12 @@ class HomeViewController: UIViewController {
         return tableView
     }()
     
-    var goals: Results<Goal>?
+    var tableGoalData: [SectionData]?
+    
     private lazy var goalsHelper = GoalsHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        goals = goalsHelper.getGoals()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -38,24 +37,31 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tableGoalData = goalsHelper.getTableData()
         tableView.reloadData()
     }
 }
 
+// MARK: -TableView methods
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return tableGoalData?[section].0.rawValue
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        guard let completionTimesSet = goalsHelper.getCompletionTimesSet() else { return 0 }
+        
+        return completionTimesSet.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return goals?.count ?? 0
+        return tableGoalData?[section].1.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "homeGoalCell") as? HomeGoalTableViewCell else { return UITableViewCell() }
         
-        guard let goal = goals?[indexPath.row] else { return UITableViewCell() }
+        guard let goal = tableGoalData?[indexPath.section].1[indexPath.row] else { return UITableViewCell() }
         
         let cellViewModel = HomeGoalTableViewCellModel(goal: goal)
         cell.configure(with: cellViewModel)
@@ -68,23 +74,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let goal = goals?[indexPath.row] else { return }
+        guard let goal = tableGoalData?[indexPath.section].1[indexPath.row] else { return }
         
-        switch goal.status {
-        case .notStarted:
-            goalsHelper.updateGoal(goal, with: .inProgress)
-        case .inProgress:
-            goalsHelper.updateGoal(goal, with: .completed)
-        case .completed:
-            goalsHelper.updateGoal(goal, with: .didNotFinish)
-        case .didNotFinish:
-            goalsHelper.updateGoal(goal, with: .notStarted)
-        }
-        
+        goalsHelper.advanceGoalToNextStatus(for: goal)
         tableView.reloadRows(at: [indexPath], with: .fade)
     }
 }
 
+// MARK: - Button actions
 extension HomeViewController {
     @objc private func goToCreateGoal() {
         let createViewController = CreateViewController()
@@ -92,6 +89,7 @@ extension HomeViewController {
     }
 }
 
+// MARK: - UI Setup methods
 extension HomeViewController {
     
     private func setupNavBar() {
