@@ -63,14 +63,16 @@ class CreateViewController: UIViewController {
 
 extension CreateViewController {
     @objc func cancelTapped() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: false, completion: nil)
     }
     
     @objc func submitTapped() {
         guard let name = nameTextField.text, !name.isEmpty  else { return }
         
-        GoalsHelper().createGoal(name: name, completionTime: .oneDay) {
-            self.navigationController?.popViewController(animated: true)
+        GoalsHelper().createGoal(name: name, completionTime: .oneDay) { [weak self] in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.dismiss(animated: true, completion: nil)
         }
     }
 }

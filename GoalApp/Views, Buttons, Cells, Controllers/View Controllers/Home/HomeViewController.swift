@@ -13,9 +13,10 @@ class HomeViewController: UIViewController {
     
     let tableView: UITableView = {
         let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.primaryLightGray
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         return tableView
     }()
     
@@ -87,7 +88,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 extension HomeViewController {
     @objc private func goToCreateGoal() {
         let createViewController = CreateViewController()
-        navigationController?.pushViewController(createViewController, animated: true)
+        navigationController?.present(createViewController, animated: true, completion: nil)
     }
 }
 
@@ -102,9 +103,10 @@ extension HomeViewController {
     
     private func setupTableView() {
         view.addSubview(tableView)
+        tableView.contentInsetAdjustmentBehavior = .never
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 64.0),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
