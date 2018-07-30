@@ -16,7 +16,15 @@ class HomeTableViewHeader: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.primaryTextColor
-        label.font = UIFont.headerBold
+        label.font = UIFont.font14b
+        return label
+    }()
+    
+    var byLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.primaryTextColor
+        label.font = UIFont.font14sb
         return label
     }()
     
@@ -39,12 +47,18 @@ class HomeTableViewHeader: UIView {
         backgroundColor = UIColor.sectionHeaderColor
         
         addSubview(titleLabel)
-        
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.0),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4.0)
             ])
-        
         titleLabel.text = title.uppercased()
+        
+        addSubview(byLabel)
+        NSLayoutConstraint.activate([
+            byLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16.0),
+            byLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor)
+            ])
+        byLabel.text = "Due By:".uppercased()
+        
     }
 }

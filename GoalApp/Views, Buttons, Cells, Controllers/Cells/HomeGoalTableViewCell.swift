@@ -22,13 +22,13 @@ class HomeGoalTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         selectionStyle = .none
-        
         setupView()
     }
     
     func configure(with viewModel: HomeGoalTableViewCellModel) {
         if let goal = viewModel.goal {
             nameLabel.text = goal.name
+            dueDateLabel.text = goalsHelper.getShortFormattedDate(from: goal)
             iconImageView.image = goalsHelper.getIcon(for: goal.status)
             iconImageView.tintColor = goalsHelper.getIconTintColor(for: goal.status)
             
@@ -42,6 +42,7 @@ class HomeGoalTableViewCell: UITableViewCell {
         backgroundColor = UIColor.primaryBackgroundColor
         subView.backgroundColor = UIColor.primaryBackgroundColor
         nameLabel.textColor = UIColor.primaryTextColor
+        nameLabel.font = UIFont.font18
         dueDateLabel.textColor = UIColor.primaryTextColor
     }
     

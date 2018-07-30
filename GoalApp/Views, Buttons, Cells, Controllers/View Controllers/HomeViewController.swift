@@ -111,7 +111,7 @@ extension HomeViewController {
     
     private func setupNavBar() {
         title = "Goals"
-        let leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToCreateGoal))
+        let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "pencil"), style: .plain, target: self, action: #selector(goToCreateGoal))
         leftBarButtonItem.tintColor = UIColor.primaryLightGray
         navigationItem.leftBarButtonItem = leftBarButtonItem
         
