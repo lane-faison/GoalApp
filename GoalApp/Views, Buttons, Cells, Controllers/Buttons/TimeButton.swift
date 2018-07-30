@@ -14,7 +14,7 @@ class TimeButton: UIButton {
     
     override var isSelected: Bool {
         didSet {
-            backgroundColor = isSelected ? UIColor.primaryBlue : UIColor.white
+            backgroundColor = isSelected ? UIColor.primaryBlue : UIColor.primaryBackgroundColor
         }
     }
     
@@ -34,12 +34,12 @@ class TimeButton: UIButton {
     }
     
     private func initialize() {
-        backgroundColor = .white
+        backgroundColor = UIColor.primaryBackgroundColor
         
         layer.borderColor = UIColor.primaryBlue.cgColor
         layer.borderWidth = 1.0
         
-        setTitleColor(.black, for: .normal)
+        setTitleColor(UIColor.primaryTextColor, for: .normal)
         setTitleColor(.white, for: .selected)
         
         setTitle(completionTime?.rawValue, for: .normal)

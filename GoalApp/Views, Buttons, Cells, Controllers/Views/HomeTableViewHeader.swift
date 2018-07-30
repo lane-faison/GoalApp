@@ -15,7 +15,7 @@ class HomeTableViewHeader: UIView {
     var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.primaryLightGray
+        label.textColor = UIColor.primaryTextColor
         label.font = UIFont.headerBold
         return label
     }()
@@ -36,15 +36,15 @@ class HomeTableViewHeader: UIView {
     }
     
     private func initialize() {
-        backgroundColor = UIColor.primaryDarkGray
+        backgroundColor = UIColor.sectionHeaderColor
         
         addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.0)
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.0),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4.0)
             ])
         
-        titleLabel.text = title
+        titleLabel.text = title.uppercased()
     }
 }

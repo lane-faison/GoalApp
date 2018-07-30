@@ -16,8 +16,7 @@ class HomeViewController: UIViewController {
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor.primaryDarkGray
+        tableView.backgroundColor = UIColor.primaryBackgroundColor
         return tableView
     }()
     
@@ -30,6 +29,7 @@ class HomeViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName: "HomeGoalTableViewCell", bundle: nil), forCellReuseIdentifier: "homeGoalCell")
         setupNavBar()
         setupTableView()
@@ -99,6 +99,11 @@ extension HomeViewController {
         let createViewController = CreateViewController()
         navigationController?.present(createViewController, animated: true, completion: nil)
     }
+    
+    @objc private func goToSettings() {
+        let settingsViewController = SettingsViewController()
+        navigationController?.pushViewController(settingsViewController, animated: true)
+    }
 }
 
 // MARK: - UI Setup methods
@@ -106,8 +111,12 @@ extension HomeViewController {
     
     private func setupNavBar() {
         title = "Goals"
-        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToCreateGoal))
-        rightBarButtonItem.tintColor = UIColor.black
+        let leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToCreateGoal))
+        leftBarButtonItem.tintColor = UIColor.primaryLightGray
+        navigationItem.leftBarButtonItem = leftBarButtonItem
+        
+        let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings"), style: .plain, target: self, action: #selector(goToSettings))
+        rightBarButtonItem.tintColor = UIColor.primaryLightGray
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     

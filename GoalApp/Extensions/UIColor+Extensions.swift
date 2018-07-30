@@ -8,7 +8,15 @@
 
 import UIKit
 
+public enum ColorTheme {
+    case light
+    case dark
+}
+
 extension UIColor {
+    
+    static var colorTheme: ColorTheme = UserDefaults.standard.bool(forKey: "darkThemed") ? .dark : .light
+    
     static var primaryRed: UIColor = hexStringToUIColor(hex: "#F44336")
     static var primaryGreen: UIColor = hexStringToUIColor(hex: "#4CAF50")
     static var primaryLightGreen: UIColor = hexStringToUIColor(hex: "#8BC34A")
@@ -16,6 +24,39 @@ extension UIColor {
     static var primaryLightGray: UIColor = hexStringToUIColor(hex: "EFEFEF")
     static var primaryDarkGray: UIColor = hexStringToUIColor(hex: "444444")
     static var primaryBlack: UIColor = hexStringToUIColor(hex: "222222")
+}
+
+extension UIColor {
+    
+    static var primaryTextColor: UIColor {
+        switch colorTheme {
+        case .light:
+            return primaryBlack
+        case .dark:
+            return primaryLightGray
+        }
+    }
+    
+    static var primaryBackgroundColor: UIColor {
+        switch colorTheme {
+        case .light:
+            return .white
+        case .dark:
+            return primaryBlack
+        }
+    }
+    
+    static var sectionHeaderColor: UIColor {
+        switch colorTheme {
+        case .light:
+            return primaryLightGray
+        case .dark:
+            return primaryDarkGray
+        }
+    }
+}
+
+extension UIColor {
     
     private static func hexStringToUIColor(hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()

@@ -24,7 +24,6 @@ class HomeGoalTableViewCell: UITableViewCell {
         selectionStyle = .none
         
         setupView()
-        setupShadow()
     }
     
     func configure(with viewModel: HomeGoalTableViewCellModel) {
@@ -40,18 +39,10 @@ class HomeGoalTableViewCell: UITableViewCell {
     }
     
     private func setupView() {
-        backgroundColor = UIColor.primaryDarkGray
-        subView.backgroundColor = UIColor.primaryBlack
-        nameLabel.textColor = UIColor.primaryLightGray
-        dueDateLabel.textColor = UIColor.primaryLightGray
-    }
-    
-    private func setupShadow() {
-        layer.shadowOpacity = 0.1
-        layer.shadowOffset = CGSize(width: 0, height: 1)
-        layer.shadowRadius = subView.bounds.size.height / 8
-        layer.shadowColor = UIColor.black.cgColor
-        layer.masksToBounds = false
+        backgroundColor = UIColor.primaryBackgroundColor
+        subView.backgroundColor = UIColor.primaryBackgroundColor
+        nameLabel.textColor = UIColor.primaryTextColor
+        dueDateLabel.textColor = UIColor.primaryTextColor
     }
     
     private func rotateIcon() {

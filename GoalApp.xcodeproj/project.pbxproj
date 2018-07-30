@@ -25,6 +25,9 @@
 		F6B3138A210CA6A100181596 /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B31389210CA6A100181596 /* PrimaryTextField.swift */; };
 		F6B3138C210CB36E00181596 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3138B210CB36E00181596 /* PrimaryButton.swift */; };
 		F6B3138E210E33C600181596 /* HomeTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3138D210E33C600181596 /* HomeTableViewHeader.swift */; };
+		F6B31390210E949100181596 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3138F210E949100181596 /* SettingsViewController.swift */; };
+		F6B31392210E95F300181596 /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B31391210E95F300181596 /* SwitchView.swift */; };
+		F6B31394210EA86C00181596 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B31393210EA86C00181596 /* UserPreferences.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		F6B31389210CA6A100181596 /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 		F6B3138B210CB36E00181596 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		F6B3138D210E33C600181596 /* HomeTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewHeader.swift; sourceTree = "<group>"; };
+		F6B3138F210E949100181596 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F6B31391210E95F300181596 /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
+		F6B31393210EA86C00181596 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				F64E1C34210446EE0031D7CB /* GoalsHelper.swift */,
+				F6B31393210EA86C00181596 /* UserPreferences.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -155,8 +162,9 @@
 		F64E1C2621043F980031D7CB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F64E1C362104570C0031D7CB /* Create */,
-				F64E1C2B210440020031D7CB /* Home */,
+				F64E1C37210457210031D7CB /* CreateViewController.swift */,
+				F64E1C2921043FFB0031D7CB /* HomeViewController.swift */,
+				F6B3138F210E949100181596 /* SettingsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -180,26 +188,11 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		F64E1C2B210440020031D7CB /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				F64E1C2921043FFB0031D7CB /* HomeViewController.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		F64E1C362104570C0031D7CB /* Create */ = {
-			isa = PBXGroup;
-			children = (
-				F64E1C37210457210031D7CB /* CreateViewController.swift */,
-			);
-			path = Create;
-			sourceTree = "<group>";
-		};
 		F6B313812106C2DB00181596 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				F6B3138D210E33C600181596 /* HomeTableViewHeader.swift */,
+				F6B31391210E95F300181596 /* SwitchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -334,6 +327,9 @@
 				F64E1C35210446EE0031D7CB /* GoalsHelper.swift in Sources */,
 				F64E1C31210443070031D7CB /* UIColor+Extensions.swift in Sources */,
 				F6B313802105975500181596 /* HomeGoalTableViewCellModel.swift in Sources */,
+				F6B31394210EA86C00181596 /* UserPreferences.swift in Sources */,
+				F6B31392210E95F300181596 /* SwitchView.swift in Sources */,
+				F6B31390210E949100181596 /* SettingsViewController.swift in Sources */,
 				F6B3138A210CA6A100181596 /* PrimaryTextField.swift in Sources */,
 				F64E1C1121043EA90031D7CB /* AppDelegate.swift in Sources */,
 				F64E1C2F210442E90031D7CB /* UIFont+Extensions.swift in Sources */,
