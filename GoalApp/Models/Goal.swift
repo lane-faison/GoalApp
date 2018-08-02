@@ -36,6 +36,13 @@ public class Goal: Object {
     var dueDate: Date? {
         return GoalsHelper().getDueDate(creationDate: created, timeToComplete: completionTime)
     }
+    
+    var goalHasExpired: Bool {
+        guard let dueDate = dueDate else { return false }
+        
+        return dueDate < created
+    }
+    
     convenience init(name: String, completionTime: CompletionTime, status: Status) {
         self.init()
         self.name = name

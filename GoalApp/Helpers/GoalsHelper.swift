@@ -15,7 +15,7 @@ struct GoalsHelper {
     
     private func getGoals() -> Results<Goal>? {
         if let realm = try? Realm() {
-            let goals = realm.objects(Goal.self)
+            let goals = realm.objects(Goal.self).sorted(byKeyPath: "created")
             return goals
         } else {
             return nil

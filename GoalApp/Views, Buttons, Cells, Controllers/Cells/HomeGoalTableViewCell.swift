@@ -16,6 +16,7 @@ class HomeGoalTableViewCell: UITableViewCell {
     @IBOutlet private weak var dueDateLabel: UILabel!
     
     var goal: Goal?
+    
     private var goalsHelper = GoalsHelper()
     
     override func awakeFromNib() {
@@ -34,6 +35,14 @@ class HomeGoalTableViewCell: UITableViewCell {
             
             if goal.status == .inProgress {
                 iconImageView.startRotating(duration: 1.5)
+            }
+            
+            if goal.goalHasExpired && goal.status != .completed {
+                subView.backgroundColor = UIColor.primaryRed.withAlphaComponent(0.2)
+            } else if goal.goalHasExpired && goal.status == .completed {
+                subView.backgroundColor = UIColor.primaryGreen.withAlphaComponent(0.2)
+            } else {
+                subView.backgroundColor = UIColor.primaryBackgroundColor
             }
         }
     }
