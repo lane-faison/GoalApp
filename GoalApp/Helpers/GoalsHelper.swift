@@ -75,13 +75,18 @@ struct GoalsHelper {
         }
     }
     
-    func deleteGoal(_ goal: Goal) {
+    func deleteGoal(_ goal: Goal, completion: (() -> Void)?) {
         if let realm = try? Realm() {
             try? realm.write {
                 realm.delete(goal)
+                completion?()
             }
         }
     }
+}
+
+// MARK: - Icons and Statuses
+extension GoalsHelper {
     
     func getIcon(for status: Status) -> UIImage? {
         switch status {
@@ -121,6 +126,10 @@ struct GoalsHelper {
             updateGoal(goal, with: .notStarted)
         }
     }
+}
+
+// MARK: - Date Helpers
+extension GoalsHelper {
     
     func getShortFormattedDate(from goal: Goal) -> String? {
         let dateFormatter = DateFormatter()
@@ -145,6 +154,23 @@ struct GoalsHelper {
         case .fiveYears:
             guard let date = NSCalendar.current.date(byAdding: .year, value: 5, to: goal.created) else { return nil }
             return dateFormatter.string(from: date)
+        }
+    }
+    
+    func getDueDate(creationDate: Date, timeToComplete: CompletionTime) -> Date? {
+        switch timeToComplete {
+        case .oneDay:
+            return NSCalendar.current.date(byAdding: .day, value: 1, to: creationDate)
+        case .oneWeek:
+            return NSCalendar.current.date(byAdding: .day, value: 7, to: creationDate)
+        case .oneMonth:
+            return NSCalendar.current.date(byAdding: .month, value: 1, to: creationDate)
+        case .sixMonths:
+            return NSCalendar.current.date(byAdding: .month, value: 6, to: creationDate)
+        case .oneYear:
+            return NSCalendar.current.date(byAdding: .year, value: 1, to: creationDate)
+        case .fiveYears:
+            return NSCalendar.current.date(byAdding: .year, value: 5, to: creationDate)
         }
     }
 }

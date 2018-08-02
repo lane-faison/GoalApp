@@ -11,7 +11,6 @@ import RealmSwift
 
 public class Goal: Object {
     @objc dynamic var name: String = ""
-    @objc dynamic var timeToComplete: Int = -1
     @objc dynamic var created: Date = Date()
     @objc private dynamic var statusType: Int = Status.notStarted.rawValue
     @objc private dynamic var completionTimeType: String = CompletionTime.oneDay.rawValue
@@ -34,6 +33,9 @@ public class Goal: Object {
         }
     }
     
+    var dueDate: Date? {
+        return GoalsHelper().getDueDate(creationDate: created, timeToComplete: completionTime)
+    }
     convenience init(name: String, completionTime: CompletionTime, status: Status) {
         self.init()
         self.name = name

@@ -21,6 +21,12 @@ class CreateViewController: UIViewController {
     
     private var nameTextField = PrimaryTextField(type: .required)
     
+    private var divider: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.primaryLightGray
+        return view
+    }()
+    
     private var chooseLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -89,6 +95,15 @@ extension CreateViewController {
             nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             nameTextField.heightAnchor.constraint(equalToConstant: 50.0)
+            ])
+        
+        view.addSubview(divider)
+        divider.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            divider.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
+            divider.trailingAnchor.constraint(equalTo: nameTextField.trailingAnchor),
+            divider.topAnchor.constraint(equalTo: nameTextField.bottomAnchor),
+            divider.heightAnchor.constraint(equalToConstant: 1.0)
             ])
     }
     
