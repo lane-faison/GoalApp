@@ -92,20 +92,47 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.reloadRows(at: [indexPath], with: .fade)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            guard let goal = tableGoalData?[indexPath.section].1[indexPath.row] else { return }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, view, success) in
+            if let goal = self?.tableGoalData?[indexPath.section].1[indexPath.row] {
+                self?.goToEditGoal(goal)
+                success(true)
+            }
+        }
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, success) in
+            self?.deleteRow(from: tableView, at: indexPath)
+            success(true)
+        }
+        
+        editAction.backgroundColor = UIColor.primaryBlue
+        deleteAction.backgroundColor = UIColor.primaryRed
+        
+        editAction.image = UIImage(named: "support")
+        deleteAction.image = UIImage(named: "trash")
+        
+        let config = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        config.performsFirstActionWithFullSwipe = false
+        return config
+    }
+}
+
+// MARK: - Custom TableView methods
+extension HomeViewController {
+    
+    private func deleteRow(from tableView: UITableView, at indexPath: IndexPath) {
+        guard let goal = tableGoalData?[indexPath.section].1[indexPath.row] else { return }
+        
+        goalsHelper.deleteGoal(goal) { [weak self] in
+            guard let strongSelf = self else { return }
             
-            goalsHelper.deleteGoal(goal) { [weak self] in
-                guard let strongSelf = self else { return }
-                
-                if strongSelf.tableGoalData?[indexPath.section].1.count == 1 {
-                    strongSelf.tableGoalData?.remove(at: indexPath.section)
-                    tableView.deleteSections([indexPath.section], with: .automatic)
-                } else {
-                    strongSelf.tableGoalData?[indexPath.section].1.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .automatic)
-                }
+            if strongSelf.tableGoalData?[indexPath.section].1.count == 1 {
+                strongSelf.tableGoalData?.remove(at: indexPath.section)
+                tableView.deleteSections([indexPath.section], with: .automatic)
+            } else {
+                strongSelf.tableGoalData?[indexPath.section].1.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
             }
         }
     }
@@ -121,6 +148,12 @@ extension HomeViewController {
     @objc private func goToSettings() {
         let settingsViewController = SettingsViewController()
         navigationController?.pushViewController(settingsViewController, animated: true)
+    }
+    
+    private func goToEditGoal(_ goal: Goal) {
+        let createViewController = CreateViewController()
+        createViewController.goal = goal
+        navigationController?.present(createViewController, animated: true, completion: nil)
     }
 }
 

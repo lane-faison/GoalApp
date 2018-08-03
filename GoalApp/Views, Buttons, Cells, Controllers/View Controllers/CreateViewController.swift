@@ -57,6 +57,13 @@ class CreateViewController: UIViewController {
     
     private var selectedCompletionTime: CompletionTime?
     
+    // Goal to be edited
+    var goal: Goal? {
+        didSet {
+            configureEditingMode(with: goal)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,6 +89,14 @@ extension CreateViewController {
             
             strongSelf.dismiss(animated: true, completion: nil)
         }
+    }
+}
+
+extension CreateViewController {
+    private func configureEditingMode(with goal: Goal?) {
+        guard let goal = goal else { return }
+        
+        nameTextField.text = goal.name
     }
 }
 
