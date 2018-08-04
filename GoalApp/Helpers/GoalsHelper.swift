@@ -141,30 +141,13 @@ extension GoalsHelper {
 // MARK: - Date Helpers
 extension GoalsHelper {
     
-    func getShortFormattedDate(from goal: Goal) -> String? {
+    func getShortFormattedDueDate(from goal: Goal) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         
-        switch goal.completionTime {
-        case .oneDay:
-            guard let date = NSCalendar.current.date(byAdding: .day, value: 1, to: goal.created) else { return nil }
-            return dateFormatter.string(from: date)
-        case .oneWeek:
-            guard let date = NSCalendar.current.date(byAdding: .day, value: 7, to: goal.created) else { return nil }
-            return dateFormatter.string(from: date)
-        case .oneMonth:
-            guard let date = NSCalendar.current.date(byAdding: .month, value: 1, to: goal.created) else { return nil }
-            return dateFormatter.string(from: date)
-        case .sixMonths:
-            guard let date = NSCalendar.current.date(byAdding: .month, value: 6, to: goal.created) else { return nil }
-            return dateFormatter.string(from: date)
-        case .oneYear:
-            guard let date = NSCalendar.current.date(byAdding: .year, value: 1, to: goal.created) else { return nil }
-            return dateFormatter.string(from: date)
-        case .fiveYears:
-            guard let date = NSCalendar.current.date(byAdding: .year, value: 5, to: goal.created) else { return nil }
-            return dateFormatter.string(from: date)
-        }
+        guard let date = getDueDate(creationDate: goal.created, timeToComplete: goal.completionTime) else { return nil }
+        
+        return dateFormatter.string(from: date)
     }
     
     func getDueDate(creationDate: Date, timeToComplete: CompletionTime) -> Date? {

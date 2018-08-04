@@ -57,7 +57,7 @@ struct ToastHelper {
         style?.titleFont = UIFont.font16b
         style?.messageFont = UIFont.font14sb
         
-        // Toast image
+        // Toast image size
         style?.imageSize = CGSize(width: 50.0, height: 50.0)
         
         // Toast layout

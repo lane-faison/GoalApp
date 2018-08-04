@@ -79,6 +79,7 @@ class CreateViewController: UIViewController {
     }
 }
 
+// MARK: - Button stack methods
 extension CreateViewController {
     @objc func cancelTapped() {
         dismiss(animated: false, completion: nil)
@@ -110,6 +111,7 @@ extension CreateViewController {
     }
 }
 
+// MARK: - Methods specific to when the user is editing a goal
 extension CreateViewController {
     private func configureEditingMode(with goal: Goal?) {
         guard let goal = goal else { return }
@@ -123,6 +125,7 @@ extension CreateViewController {
     }
 }
 
+// MARK: - View setup
 extension CreateViewController {
     
     private func setupNameTextField() {
@@ -203,5 +206,9 @@ extension CreateViewController {
             }
         }
         sender.isSelected = !sender.isSelected
+        
+        if !sender.isSelected {
+            selectedCompletionTime = nil
+        }
     }
 }

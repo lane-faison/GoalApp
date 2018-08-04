@@ -29,7 +29,7 @@ class HomeGoalTableViewCell: UITableViewCell {
     func configure(with viewModel: HomeGoalTableViewCellModel) {
         if let goal = viewModel.goal {
             nameLabel.text = goal.name
-            dueDateLabel.text = goalsHelper.getShortFormattedDate(from: goal)
+            dueDateLabel.text = goalsHelper.getShortFormattedDueDate(from: goal)
             iconImageView.image = goalsHelper.getIcon(for: goal.status)
             iconImageView.tintColor = goalsHelper.getIconTintColor(for: goal.status)
             
@@ -48,8 +48,6 @@ class HomeGoalTableViewCell: UITableViewCell {
     }
     
     private func setupView() {
-        backgroundColor = UIColor.primaryBackgroundColor
-        subView.backgroundColor = UIColor.primaryBackgroundColor
         nameLabel.textColor = UIColor.primaryTextColor
         nameLabel.font = UIFont.font18
         dueDateLabel.textColor = UIColor.primaryTextColor

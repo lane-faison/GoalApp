@@ -40,7 +40,7 @@ public class Goal: Object {
     var goalHasExpired: Bool {
         guard let dueDate = dueDate else { return false }
         
-        return dueDate < created
+        return dueDate < Date()
     }
     
     convenience init(name: String, completionTime: CompletionTime, status: Status) {
