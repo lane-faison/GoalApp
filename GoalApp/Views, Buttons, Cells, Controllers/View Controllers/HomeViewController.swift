@@ -129,10 +129,10 @@ extension HomeViewController {
             
             if strongSelf.tableGoalData?[indexPath.section].1.count == 1 {
                 strongSelf.tableGoalData?.remove(at: indexPath.section)
-                tableView.deleteSections([indexPath.section], with: .automatic)
+                tableView.deleteSections([indexPath.section], with: .none)
             } else {
                 strongSelf.tableGoalData?[indexPath.section].1.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.deleteRows(at: [indexPath], with: .top)
             }
         }
     }
