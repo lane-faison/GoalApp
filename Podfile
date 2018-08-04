@@ -8,5 +8,6 @@ target 'GoalApp' do
   # Pods for GoalApp
 
 pod 'RealmSwift', '~> 3.4.0'
+pod 'Toast', '~> 4.0.0'
 
 end

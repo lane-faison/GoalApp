@@ -18,6 +18,8 @@ extension UIColor {
     static var colorTheme: ColorTheme = UserDefaults.standard.bool(forKey: "darkThemed") ? .dark : .light
     
     static var primaryRed: UIColor = hexStringToUIColor(hex: "#F44336")
+    static var primaryOrange: UIColor = hexStringToUIColor(hex: "#FF9800")
+    static var primaryYellow: UIColor = hexStringToUIColor(hex: "#FFEB3B")
     static var primaryGreen: UIColor = hexStringToUIColor(hex: "#4CAF50")
     static var primaryLightGreen: UIColor = hexStringToUIColor(hex: "#8BC34A")
     static var primaryBlue: UIColor = hexStringToUIColor(hex: "#2196F3")

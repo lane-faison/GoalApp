@@ -57,6 +57,9 @@ class CreateViewController: UIViewController {
     
     private var selectedCompletionTime: CompletionTime?
     
+    private lazy var goalHelper = GoalsHelper()
+    private lazy var toasterHelper = ToastHelper()
+    
     // Goal to be edited
     var goal: Goal? {
         didSet {
@@ -82,14 +85,25 @@ extension CreateViewController {
     }
     
     @objc func submitTapped() {
-        guard let name = nameTextField.text, !name.isEmpty, let time = selectedCompletionTime  else { return }
+        if nameTextField.text?.isEmpty ?? true || nameTextField.text == nil || nameTextField.text == "" {
+            toasterHelper.presentToast(from: self, type: .missingName)
+            return
+        } else if selectedCompletionTime == nil {
+            toasterHelper.presentToast(from: self, type: .missingTime)
+            return
+        }
+        
+        guard let name = nameTextField.text, let time = selectedCompletionTime else {
+                toasterHelper.presentToast(from: self, type: .genericError)
+                return
+        }
         
         if let editedGoal = goal {
-            GoalsHelper().editGoal(editedGoal, toName: name, toCompletionTime: time) { [weak self] in
+            goalHelper.editGoal(editedGoal, toName: name, toCompletionTime: time) { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             }
         } else {
-            GoalsHelper().createGoal(name: name, completionTime: time) { [weak self] in
+            goalHelper.createGoal(name: name, completionTime: time) { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             }
         }

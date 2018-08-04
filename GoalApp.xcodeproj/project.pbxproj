@@ -28,6 +28,7 @@
 		F6B31390210E949100181596 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3138F210E949100181596 /* SettingsViewController.swift */; };
 		F6B31392210E95F300181596 /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B31391210E95F300181596 /* SwitchView.swift */; };
 		F6B31394210EA86C00181596 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B31393210EA86C00181596 /* UserPreferences.swift */; };
+		F6B55C902115312D0014EB76 /* ToastHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B55C8F2115312D0014EB76 /* ToastHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		F6B3138F210E949100181596 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F6B31391210E95F300181596 /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
 		F6B31393210EA86C00181596 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		F6B55C8F2115312D0014EB76 /* ToastHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				F64E1C34210446EE0031D7CB /* GoalsHelper.swift */,
+				F6B55C8F2115312D0014EB76 /* ToastHelper.swift */,
 				F6B31393210EA86C00181596 /* UserPreferences.swift */,
 			);
 			path = Helpers;
@@ -283,11 +286,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-GoalApp/Pods-GoalApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast/Toast.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -320,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6B3137B2104D86F00181596 /* HomeGoalTableViewCell.swift in Sources */,
+				F6B55C902115312D0014EB76 /* ToastHelper.swift in Sources */,
 				F64E1C38210457210031D7CB /* CreateViewController.swift in Sources */,
 				F64E1C2D2104425C0031D7CB /* UIView+Extensions.swift in Sources */,
 				F6B3138E210E33C600181596 /* HomeTableViewHeader.swift in Sources */,
