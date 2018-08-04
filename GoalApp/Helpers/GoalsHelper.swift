@@ -75,6 +75,16 @@ struct GoalsHelper {
         }
     }
     
+    func editGoal(_ goal: Goal, toName name: String, toCompletionTime completionTime: CompletionTime, completion: (() -> Void)?) {
+        if let realm = try? Realm() {
+            try? realm.write {
+                goal.name = name
+                goal.completionTime = completionTime
+                completion?()
+            }
+        }
+    }
+    
     func deleteGoal(_ goal: Goal, completion: (() -> Void)?) {
         if let realm = try? Realm() {
             try? realm.write {

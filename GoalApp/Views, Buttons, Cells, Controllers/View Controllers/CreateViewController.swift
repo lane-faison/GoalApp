@@ -84,10 +84,14 @@ extension CreateViewController {
     @objc func submitTapped() {
         guard let name = nameTextField.text, !name.isEmpty, let time = selectedCompletionTime  else { return }
         
-        GoalsHelper().createGoal(name: name, completionTime: time) { [weak self] in
-            guard let strongSelf = self else { return }
-            
-            strongSelf.dismiss(animated: true, completion: nil)
+        if let editedGoal = goal {
+            GoalsHelper().editGoal(editedGoal, toName: name, toCompletionTime: time) { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
+        } else {
+            GoalsHelper().createGoal(name: name, completionTime: time) { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
         }
     }
 }
@@ -97,6 +101,11 @@ extension CreateViewController {
         guard let goal = goal else { return }
         
         nameTextField.text = goal.name
+        
+        for option in optionButtons where option.completionTime == goal.completionTime {
+            selectedCompletionTime = option.completionTime
+            option.isSelected = true
+        }
     }
 }
 
