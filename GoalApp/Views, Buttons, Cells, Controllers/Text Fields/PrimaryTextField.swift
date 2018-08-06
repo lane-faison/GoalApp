@@ -52,6 +52,7 @@ class PrimaryTextField: UITextField {
         backgroundColor = .white
         placeholder = type.rawValue
         textAlignment = .right
+        returnKeyType = .continue
         
         addSubview(label)
         NSLayoutConstraint.activate([

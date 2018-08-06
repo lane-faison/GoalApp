@@ -29,7 +29,7 @@ class HomeGoalTableViewCell: UITableViewCell {
     func configure(with viewModel: HomeGoalTableViewCellModel) {
         if let goal = viewModel.goal {
             nameLabel.text = goal.name
-            dueDateLabel.text = goalsHelper.getShortFormattedDueDate(from: goal)
+            
             iconImageView.image = goalsHelper.getIcon(for: goal.status)
             iconImageView.tintColor = goalsHelper.getIconTintColor(for: goal.status)
             
@@ -39,10 +39,16 @@ class HomeGoalTableViewCell: UITableViewCell {
             
             if goal.goalHasExpired && goal.status != .completed {
                 subView.backgroundColor = UIColor.primaryRed.withAlphaComponent(0.2)
+                dueDateLabel.text = "Expired"
+                dueDateLabel.textColor = UIColor.primaryRed
             } else if goal.goalHasExpired && goal.status == .completed {
                 subView.backgroundColor = UIColor.primaryGreen.withAlphaComponent(0.2)
+                dueDateLabel.text = goalsHelper.getShortFormattedDueDate(from: goal)
+                dueDateLabel.textColor = UIColor.primaryTextColor
             } else {
                 subView.backgroundColor = UIColor.primaryBackgroundColor
+                dueDateLabel.text = goalsHelper.getShortFormattedDueDate(from: goal)
+                dueDateLabel.textColor = UIColor.primaryTextColor
             }
         }
     }

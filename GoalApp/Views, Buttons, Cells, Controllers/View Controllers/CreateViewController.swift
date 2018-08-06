@@ -76,6 +76,9 @@ class CreateViewController: UIViewController {
         setupChooseLabel()
         setupButtons()
         setupTimeStackView()
+        
+        let viewTapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
+        view.addGestureRecognizer(viewTapGesture)
     }
 }
 
@@ -131,6 +134,7 @@ extension CreateViewController {
     private func setupNameTextField() {
         view.addSubview(nameTextField)
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
+        nameTextField.delegate = self
         NSLayoutConstraint.activate([
             nameTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 64.0),
             nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -210,5 +214,17 @@ extension CreateViewController {
         if !sender.isSelected {
             selectedCompletionTime = nil
         }
+    }
+}
+
+// MARK: - TextView delegate methods & related methods
+extension CreateViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @objc private func viewTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
 }
